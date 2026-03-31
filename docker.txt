@@ -1,0 +1,5 @@
+for mongodb-
+docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=delta_admin -e MONGO_INITDB_ROOT_PASSWORD=delta_password --name mongo --network mongo-network mongo
+
+for mongo-express(for gui of the stored data we use mongo-express)
+docker run -d -p8081:8081 --network mongo-network --name mongo-express -e ME_CONFIG_MONGODB_ADMINUSERNAME=delta_admin --e ME_CONFIG_MONGODB_ADMINPASSWORD=delta_password --e ME_CONFIG_MONGODB_URL="mongodb://delta_admin:delta_password@mongo:27017" mongo-express
