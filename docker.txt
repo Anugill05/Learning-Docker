@@ -4,8 +4,12 @@ docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=delta_admin -e MONGO_
 --->for mongo-express(for gui of the stored data we use mongo-express)
 docker run -d -p8081:8081 --network mongo-network --name mongo-express -e ME_CONFIG_MONGODB_ADMINUSERNAME=delta_admin --e ME_CONFIG_MONGODB_ADMINPASSWORD=delta_password --e ME_CONFIG_MONGODB_URL="mongodb://delta_admin:delta_password@mongo:27017" mongo-express
 
---->now its a very tidious task to write such big commands and we have multiple containers so we will use docker compose(where we write instructions in yml file) 
+--->now its a very tidious task to write such big commands and we have multiple containers so we will use docker compose(where we write instructions in yaml file) 
 instead of commands
 docker compose- is a tool for defining and running multi-container applications
 
-docker-compose.yml(indentation and spacing here matters a lot)
+docker-compose.yaml(indentation and spacing here matters a lot)
+
+**when we try to run docker container with the help of yaml file , to docker compose hmare liye automatically network set up and create krke deta h
+command- docker-compose -f fileName.yaml up -d (up wala action sabse phle hmare liye network ko setup krega , hmare docker containers ko setup krega, unhe running state k andar leke ayega)
+         docker-compose -f fileName.yml down (down action will delete our containers permanently)
